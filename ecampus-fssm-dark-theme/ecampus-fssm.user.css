@@ -1,15 +1,27 @@
 /* ==UserStyle==
 @name           E-Campus FSSM Dark Mode
 @namespace      github.com/openstyles/stylus
-@version        1.1.0
+@version        1.1.1
 @description    A custom dark theme for E-Campus FSSM
 @author         Ayoub_Moussaoui
+@license        MIT
 @updateURL      https://raw.githubusercontent.com/Ayoub-Moussaoui/UserStyles/main/ecampus-fssm-dark-theme/ecampus-fssm.user.css
 @downloadURL    https://raw.githubusercontent.com/Ayoub-Moussaoui/UserStyles/main/ecampus-fssm-dark-theme/ecampus-fssm.user.css
 ==/UserStyle== */
 @-moz-document domain("ecampus-fssm.uca.ma") {
 
-    /* 1. ANTI-FLASH & SKELETON FIX */
+    /* --- 1. BOOTSTRAP VARIABLE OVERRIDES --- */
+    :root,[data-bs-theme="light"], [data-bs-theme="dark"] {
+        --bs-body-bg: #121212 !important;
+        --bs-body-color: #e0e0e0 !important;
+        --bs-border-color: #606060 !important;
+        --bs-border-color-translucent: rgba(96, 96, 96, 0.5) !important;
+        --bs-tertiary-bg: #1e1e1e !important;
+        --bs-secondary-bg: #2c2c2c !important;
+        --bs-emphasis-color: #ffffff !important;
+    }
+
+    /* --- 2. ANTI-FLASH & SKELETON FIX --- */
     html, body { 
         background-color: #121212 !important; 
     }
@@ -25,26 +37,20 @@
         100% { background-color: #2c2c2c; }
     }
 
-    /* --- BOOTSTRAP VARIABLE OVERRIDES --- */
-    :root, [data-bs-theme="light"], [data-bs-theme="dark"] {
-        --bs-body-bg: #121212 !important;
-        --bs-body-color: #e0e0e0 !important;
-        --bs-border-color: #606060 !important;
-        --bs-border-color-translucent: rgba(96, 96, 96, 0.5) !important;
-        --bs-tertiary-bg: #1e1e1e !important;
-        --bs-secondary-bg: #2c2c2c !important;
-        --bs-emphasis-color: #ffffff !important;
-    }
-
-    /* --- GLOBAL BACKGROUNDS & TEXT --- */
-    body, #page-wrapper, .bg-body, .bg-white, .card, .drawer, .dropdown-menu,
+    /* --- 3. GLOBAL BACKGROUNDS & TEXT --- */
+    body, #page-wrapper, .bg-body, .bg-white, .card, .drawer,
     #page.drawers .main-inner, .main-inner, .loginform, #region-main-box, 
     #region-main, .moodle-dialogue-base .moodle-dialogue-wrap {
         background-color: #121212 !important;
         color: #e0e0e0 !important;
     }
-    
-    /* --- LOGIN PAGE OVERRIDES --- */
+
+    h1, h2, h3, h4, h5, h6, span, .card-title, .nav-link, .list-group-item,
+    .activity-name-area, .instancename {
+        color: #ffffff !important;
+    }
+
+    /* --- 4. LOGIN PAGE OVERRIDES --- */
     #page-login-index #region-main-box, #page-login-index #region-main,
     body.path-login #region-main-box, body.path-login #region-main {
         background-color: transparent !important;
@@ -52,72 +58,107 @@
         box-shadow: none !important;
     }
 
-    /* Headlines and Titles */
-    h1, h2, h3, h4, h5, h6, span, .card-title, .nav-link, .list-group-item,
-    .activity-name-area, .instancename {
-        color: #ffffff !important;
-    }
-
-    /* --- NAVIGATION & SIDEBARS --- */
+    /* --- 5. NAVIGATION & SIDEBARS --- */
     .navbar, .drawerheader, .drawercontent, .secondary-navigation {
         background-color: #1e1e1e !important;
         border-color: #606060 !important;
     }
 
-    /* Cards, Tables, and Content */
+    .nav-link:hover, .nav-link:focus, .dropdown-item:hover, .dropdown-item:focus, .list-group-item:hover {
+        background-color: #383838 !important;
+        color: #ffffff !important;
+        border-radius: 4px;
+    }
+
+    /* --- 6. CARDS, TABLES & CONTENT --- */
     .card-body, .course-content, .generaltable, .generaltable th, .generaltable td {
         background-color: #1e1e1e !important;
         border-color: #606060 !important;
     }
 
-    /* --- FORMS, INPUTS & FOCUS --- */
+    .card-header, .block .header {
+        background-color: #2c2c2c !important;
+        border-bottom: 1px solid #606060 !important;
+    }
+
+    .path-mod .activity-header:not(:empty) {
+        background-color: #1e1e1e !important;
+        border: 1px solid #606060 !important;
+        color: #ffffff !important;
+    }
+
+    /* --- 7. POPOVERS, TOASTS & DROPDOWNS --- */
+    .popover-region-container, .toast-wrapper, .dropdown-menu {
+        background-color: #212121 !important;
+        border: 1px solid #606060 !important;
+    }
+
+    /* --- 8. FORMS, INPUTS & FOCUS --- */
     input, textarea, select, .form-control, .form-select {
         background-color: #2c2c2c !important;
         color: #ffffff !important;
         border: 1px solid #606060 !important;
     }
-    .form-control:focus {
+
+    .form-control:focus, .form-select:focus {
         border-color: #81c784 !important;
         box-shadow: 0 0 0 0.25rem rgba(129, 199, 132, 0.25) !important;
     }
-    ::placeholder { color: #888888 !important; opacity: 1 !important; }
 
-    /* --- LINKS AND BUTTONS --- */
-    a, .btn-link { color: #81c784 !important; }
-    .btn-primary { background-color: #0d47a1 !important; border: none !important; }
-    .breadcrumb-item a { color: #81c784 !important; }
-
-    /* --- NAVIGATION HOVERS --- */
-    .nav-link:hover, .nav-link:focus, .dropdown-item:hover, .list-group-item:hover {
-        background-color: #383838 !important;
-        color: #ffffff !important;
+    ::placeholder, .form-control::placeholder, .form-select::placeholder { 
+        color: #888888 !important; 
+        opacity: 1 !important; 
     }
 
-    /* --- IMAGES & ICONS --- */
-    img { filter: brightness(.8) contrast(1.2); }
-    .logo, .avatar img, .icon { filter: none !important; }
-    .activityicon { filter: invert(1) brightness(2) !important; }
-    .activityicon[src*="monologo"], .activityicon[src*="forum"], 
-    .activityicon[src*="quiz"], .activityicon[src*="assign"],
-    .activityicon[src*="pdf"], .activityicon[src*="powerpoint"] {
-        filter: none !important;
+    /* --- 9. LINKS AND BUTTONS --- */
+    a, .btn-link, .breadcrumb-item a { 
+        color: #81c784 !important; 
     }
 
-    /* --- ALERTS & NOTIFICATIONS --- */
+    .btn-primary { 
+        background-color: #0d47a1 !important; 
+        border: none !important; 
+    }
+
+    /* --- 10. ALERTS & NOTIFICATIONS --- */
     .alert, .alert-info {
         background-color: #1e2a3a !important;
         border-color: #2c3e50 !important;
         color: #81c784 !important;
     }
 
-    /* --- ACTIVITY HEADER FIX --- */
-    .path-mod .activity-header:not(:empty) {
-        background-color: #1e1e1e !important;
-        border: 1px solid #606060 !important;
+    /* --- 11. IMAGES & ICONS --- */
+    img { 
+        filter: brightness(.8) contrast(1.2); 
     }
 
-    /* --- SCROLLBAR --- */
+    .logo, .avatar img, .icon { 
+        filter: none !important; 
+    }
+
+    .activityicon { 
+        filter: invert(1) brightness(2) !important; 
+    }
+
+    /*
+    .activityicon[src*="monologo"], .activityicon[src*="forum"], 
+    .activityicon[src*="quiz"], .activityicon[src*="assign"],
+    .activityicon[src*="pdf"], .activityicon[src*="powerpoint"] {
+        filter: none !important;
+    }
+    */
+
+    .userinitials {
+        background-color: #a6632d;
+    }
+
+    /* --- 12. SCROLLBAR --- */
     ::-webkit-scrollbar { width: 12px; }
     ::-webkit-scrollbar-track { background: #121212; }
-    ::-webkit-scrollbar-thumb { background-color: #333; border: 3px solid #121212; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { 
+        background-color: #333; 
+        border: 3px solid #121212; 
+        border-radius: 10px; 
+    }
+
 }
